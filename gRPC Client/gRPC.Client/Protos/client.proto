@@ -1,0 +1,25 @@
+syntax = "proto3";
+option csharp_namespace = "GrpcClient";
+
+package persons;
+
+import "google/protobuf/any.proto";
+
+service GetPersonService{
+  rpc GetPerson(PersonIdReq) returns (PersonResp);
+}
+
+message PersonIdReq{
+  int32 id = 1;
+}
+
+message PersonClss{
+  int32 Id = 1;
+  string Ad = 2;
+  string Soyad = 3;
+  int32 Yas = 4;
+}
+
+message PersonResp{
+  PersonClss person = 1;
+}

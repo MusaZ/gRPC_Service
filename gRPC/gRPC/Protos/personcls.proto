@@ -1,0 +1,11 @@
+﻿syntax = "proto3";
+option csharp_namespace = "GrpcPersonClass";
+
+//package PersonClass;
+
+message gPerson{
+  int32 id = 1;
+  string name = 2;
+  string surname = 3;
+  int32 age = 4;
+}
