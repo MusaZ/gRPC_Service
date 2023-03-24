@@ -10,7 +10,16 @@ public class Console
   {
     using var channel = GrpcChannel.ForAddress("http://localhost:8000");
     var client = new GetPersonService.GetPersonServiceClient(channel);
-    var reply = client.GetPerson(new PersonIdReq(){Id=1});
+   again:
+    Write("İstenilen Id Yi Giriniz(1-5) : ");
+    int pID = Convert.ToInt32(ReadLine());
+    if(pID < 1 | pID > 5)
+    {
+      WriteLine("Sınır Değerleri Aşıldı.");
+      goto again;
+    }   
+
+    var reply = client.GetPerson(new PersonIdReq(){Id=pID});
 
     PersonClss _personClss = reply.Person;
     WriteLine(_personClss.Ad);
